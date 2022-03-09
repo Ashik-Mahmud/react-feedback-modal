@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import styled  from 'styled-components';
+import React,{useState} from 'react'
+import { Modal } from './components/Modal';
+const Container = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height: 100vh;
+`;
+const Button = styled.button`
+    padding: 0.8rem;
+    background: #18cc18;;
+    font-family: poppins;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor:pointer;
+`;
 
-function App() {
+
+const App = () => {
+    let [modal, setModal] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+         <Container>
+            <Button onClick={()=>{setModal(prev=> !prev)}}>Modal Open</Button>
+            <Modal modal={modal} setModal={setModal} />
+        </Container>
+      </>
   );
 }
 
